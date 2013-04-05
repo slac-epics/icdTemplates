@@ -31,3 +31,6 @@ CHECK_RELEASE = YES
 # You must rebuild in the iocBoot directory for this to
 #   take effect.
 #IOCS_APPL_TOP = </IOC/path/to/application/top>
+
+INSTALL_LOCATION_STARTUP += $(INSTALL_LOCATION)/startup
+DIRECTORY_TARGETS += $(INSTALL_LOCATION_STARTUP)
