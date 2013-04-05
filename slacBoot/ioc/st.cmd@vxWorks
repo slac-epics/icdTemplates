@@ -2,7 +2,7 @@
 
 ## The following is needed if your board support package doesn't at boot time
 ## automatically cd to the directory containing its startup script
-#cd "_TOP_/iocBoot/_IOC_"
+#cd "_TOP_/startup/_IOC_"
 
 < cdCommands
 #< ../nfsCommands

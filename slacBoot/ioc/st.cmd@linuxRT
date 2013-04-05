@@ -171,7 +171,7 @@ set_pass1_restoreFile("info_settings.sav")
 # =============================================================
 # Start EPICS IOC Process (i.e. all threads will start running)
 # =============================================================
-cd ${TOP}/iocBoot/${IOC}
+cd ${TOP}/startup/${IOC}
 iocInit()
 
 # =====================================================

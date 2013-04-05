@@ -30,8 +30,8 @@ rtemsUtilsSup_registerRecordDeviceDriver(pdbbase)
 # =========================================================================================
 # Load up shortcuts to paths that can be used by the EPICS IOC Shell
 # =========================================================================================
-< iocBoot/_IOC_/envPaths
-< iocBoot/_IOC_/cdCommands
+< startup/_IOC_/envPaths
+< startup/_IOC_/cdCommands
 # ====================================================================
 # Setup some additional environment variables
 # ====================================================================
