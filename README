@@ -16,6 +16,10 @@
 #
 #==============================================================
 #
+# NOTE:
+# Please do not type make here !!
+# This module is only a template used by makeBaseApp.pl to create an EPICS IOC Application
+
 This module provides templates that are used by ICD to support our style
 of IOC Application Building for the facilities we support.
 These templates are used by makeBaseApp.pl
@@ -34,7 +38,3 @@ At this time I have only created one template called "slac" focused on creating 
 Indeed, we can imagine a template focused on creating EPICS drivers or Device support.
 
 # End of file
-
-
-
-
