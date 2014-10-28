@@ -76,6 +76,9 @@ RTEMSUTILS=$(EPICS_MODULES)/rtemsutils/$(RTEMSUTILS_MODULE_VERSION)
 
 EPICS_BASE=$(BASE_SITE_TOP)/$(BASE_MODULE_VERSION)
 
+# Location of Linux Kernel Modules:
+LINUX_KERNEL_MODULES=$(PACKAGE_SITE_TOP)/linuxKernel_Modules
+
 # Set RULES here if you want to take build rules from somewhere
 # other than EPICS_BASE:
 #RULES=/path/to/epics/support/module/rules/x-y
