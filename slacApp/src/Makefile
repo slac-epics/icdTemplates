@@ -69,24 +69,22 @@ _APPNAME__LIBS += caPutLog
 # ===================================
 # Needed to link in the EVR support
 # ===================================
-# _APPNAME__LIBS += evrSupport
-# _APPNAME__LIBS += devMrfEr
+ _APPNAME__LIBS += evrSupport
+ _APPNAME__LIBS += devMrfEr
 
-# ifneq ($(T_A),linuxRT-x86)
-#   ifneq ($(T_A),linux-x86)
-#       _APPNAME__LIBS += mrfVme64x
-#   endif
-# endif
+ ifneq ($(T_A),linuxRT-x86)
+   ifneq ($(T_A),linux-x86)
+       _APPNAME__LIBS += mrfVme64x
+   endif
+ endif
 
-# ifeq ($(T_A),linuxRT-x86)
-#  _APPNAME__LIBS += drvMrf
-#  _APPNAME__LIBS += mrfApi
-# endif
+ ifeq ($(T_A),linuxRT-x86)
+  _APPNAME__LIBS += drvMrf
+ endif
  
-# ifeq ($(T_A),linux-x86)
-#  _APPNAME__LIBS += drvMrf
-#  _APPNAME__LIBS += mrfApi
-# endif
+ ifeq ($(T_A),linux-x86)
+  _APPNAME__LIBS += drvMrf
+ endif
 
 
 
