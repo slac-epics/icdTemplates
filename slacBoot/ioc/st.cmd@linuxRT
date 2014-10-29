@@ -21,7 +21,7 @@ epicsEnvSet("EPICS\_IOC\_LOG_CLIENT_INET","${IOC}")
 
 epicsEnvSet(TOP,"../..")
 
-epicsEnvSet(PATH,"/afs/slac/g/lcls/epics/base/base-R3-14-12/bin/linuxRT-x86")
+epicsEnvSet(PATH,"/afs/slac/g/lcls/epics/R3-14-12-3_1-0/base/base-R3-14-12-3_1-0/bin/linuxRT-x86")
 
 # ========================================================
 # Support Large Arrays/Waveforms; Number in Bytes
