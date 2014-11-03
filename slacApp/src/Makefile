@@ -91,6 +91,10 @@ _APPNAME__LIBS += $(CEXP_LIBS)
  ifeq ($(T_A),linux-x86)
   _APPNAME__LIBS += drvMrf
  endif
+
+ ifeq ($(T_A),linux-x86_64)
+  _APPNAME__LIBS += drvMrf
+ endif
 # =====================================================
 # END EVR libraries
 # =====================================================
