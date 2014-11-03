@@ -196,7 +196,7 @@ set_savefile_path("/data/${IOC}/autosave")
 # records
 # ============================================================
 save_restoreSet_UseStatusPVs(1)
-save_restoreSet_status_prefix("${IOC}:")
+save_restoreSet_status_prefix("${IOC_NAME}:")
 
 ## Restore datasets
 set_pass0_restoreFile("info_settings.sav")
