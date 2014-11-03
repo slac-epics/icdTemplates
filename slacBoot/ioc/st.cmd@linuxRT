@@ -216,7 +216,6 @@ asSetFilename("${ACF_COMMON}/caputlogtest.acf")
 # =============================================================
 # Start EPICS IOC Process (i.e. all threads will start running)
 # =============================================================
-cd ${TOP}/startup/${IOC}
 iocInit()
 
 # =====================================================
