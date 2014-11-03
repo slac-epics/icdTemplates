@@ -57,6 +57,12 @@ MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
 EVENT_MODULE_VERSION=event-R4-1-3
 RTEMSUTILS_MODULE_VERSION=rtemsutils-R1-0-0-lcls5
 
+# Let's add in support for the cexpsh()
+# This can be called from the EPICS shell
+# Please look at the README file in 
+# CEXP module
+CEXP_MODULE_VERSION=cexpsh-R1-0-0
+
 # ============================================================
 #  Module Location
 # ============================================================
@@ -70,6 +76,8 @@ MISCUTILS=$(EPICS_MODULES)/miscUtils/$(MISCUTILS_MODULE_VERSION)
 EVENT=$(EPICS_MODULES)/event/$(EVENT_MODULE_VERSION)
 
 RTEMSUTILS=$(EPICS_MODULES)/rtemsutils/$(RTEMSUTILS_MODULE_VERSION)
+
+CEXP_MODULE_VERSION=cexpsh-R1-0-0
 
 # EPICS_BASE usually appears last so other apps can override stuff:
 ##EPICS_BASE=_EPICS_BASE_
