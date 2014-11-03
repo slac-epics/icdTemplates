@@ -23,14 +23,16 @@ _APPNAME__DBD += base.dbd
 _APPNAME__DBD += devIocStats.dbd
 _APPNAME__DBD += autosave.dbd
 _APPNAME__DBD += caPutLog.dbd
+_APPNAME__DBD += $(CEXP_DBDS)
+
 
 ifeq ($(T_A),linuxRT-x86)
  _APPNAME__DBD += systemCommand.dbd
 endif
 
-# If you have an EVR uncomment the following two lines:
-# _APPNAME__DBD += evrSupport.dbd
-# _APPNAME__DBD += devMrfEr.dbd
+# If you don't have an EVR comment the following two lines:
+_APPNAME__DBD += evrSupport.dbd
+_APPNAME__DBD += devMrfEr.dbd
 
 # ======================================================================
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
@@ -51,9 +53,6 @@ endif
 # _APPNAME__SRCS += file1.c
 # _APPNAME__SRCS += file2.c
 
-# The following adds support from base/src/vxWorks
-# _APPNAME__OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
-
 # =====================================================
 # Link in the code from other libraries
 # =====================================================
@@ -66,9 +65,16 @@ _APPNAME__LIBS += autosave
 # Needed to link caPutLog support
 _APPNAME__LIBS += caPutLog
 
-# ===================================
-# Needed to link in the EVR support
-# ===================================
+# Needed to link cexpsh() support
+_APPNAME__LIBS += $(CEXP_LIBS)
+
+
+# =============================================
+# Begin to link in the EVR support for
+# RTEMS, linux, and linuxRT
+# If you don't have an EVR, you can comment out 
+# the lines below.
+# =============================================
  _APPNAME__LIBS += evrSupport
  _APPNAME__LIBS += devMrfEr
 
@@ -85,9 +91,8 @@ _APPNAME__LIBS += caPutLog
  ifeq ($(T_A),linux-x86)
   _APPNAME__LIBS += drvMrf
  endif
-
-
-
+# =====================================================
+# END EVR libraries
 # =====================================================
 
 # NOTE: To build SNL programs, SNCSEQ must be defined
