@@ -17,7 +17,7 @@ epicsEnvSet("LOCATION","Twilight Zone")
 # How to escape the "_IOC_" as the PERL program
 # will try to replace it.
 # So, uncomment the following and remove the backslash
-epicsEnvSet("{EPICS_IOC_LOG_CLIENT_INET}","${IOC}")
+epicsEnvSet("EPICS_IOC_LOG_CLIENT_INET","${IOC}")
 
 epicsEnvSet(TOP,"../..")
 
