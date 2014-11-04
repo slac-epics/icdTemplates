@@ -24,7 +24,7 @@ epicsEnvSet(TOP,"../..")
 # Need this path to EPICS BASE so that caRepeater can be started:
 # Let's figure out a way to pass this one in via the IOC's
 # initial startup.cmd: another job for hookIOC.py :)
-epicsEnvSet(PATH,"/afs/slac/g/lcls/epics/R3-14-12-3_1-0/base/base-R3-14-12-3_1-0/bin/linuxRT-x86")
+epicsEnvSet(PATH,"${EPICS_BASE}/bin/_ARCH_")
 
 # ========================================================
 # Support Large Arrays/Waveforms; Number in Bytes
@@ -117,19 +117,19 @@ ErConfigure(0, 0, 0, 0, 1)
 # The MACRO IOCNAME should be defined via the IOCs top level, "startup.cmd"
 #  found in $IOC/<iocName>/startup.cmd
 # The name must according the SLAC ICD PV naming convention.
-dbLoadRecords("db/iocAdminSoft.db","IOC=${IOCNAME}")
-dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOCNAME}")
+dbLoadRecords("db/iocAdminSoft.db","IOC=${IOC_NAME}")
+dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 
 # The following database is a result of a python parser
 # which looks at RELEASE_SITE and RELEASE to discover
 # versions of software your IOC is referencing
 # The python parser is part of iocAdmin
-dbLoadRecords("db/iocRelease.db","IOC=${IOCNAME}")
+dbLoadRecords("db/iocRelease.db","IOC=${IOC_NAME}")
 
 # =====================================================================
 # Load database for autosave status
 # =====================================================================
-dbLoadRecords("db/save_restoreStatus.db", "P=${IOCNAME}:")
+dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
 
 # ========================================================
 # Load EVR Databases for the Timing system
@@ -141,18 +141,18 @@ dbLoadRecords("db/save_restoreStatus.db", "P=${IOCNAME}:")
 # SYS1 = FACET
 # SYS6 = Test Facilities
 # ===========================================================================
-dbLoadRecords("db/Pattern.db","IOC=${IOCNAME},SYS=SYS0")
+dbLoadRecords("db/Pattern.db","IOC=${IOC_NAME},SYS=SYS0")
 
 # Databases for the PMC EVR230
 dbLoadRecords("db/EvrPmc.db","EVR=EVR:B34:EV07,CRD=0,SYS=SYS0")
-dbLoadRecords("db/PMC-trig.db","IOC=${IOCNAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
+dbLoadRecords("db/PMC-trig.db","IOC=${IOC_NAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
 
 # Databases for the PMC EVR300
 #dbLoadRecords("db/EvrPci.db","EVR=EVR:B34:EV081,SYS=SYS0")
-#dbLoadRecords("db/PCI-trig.db","IOC=${IOCNAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
+#dbLoadRecords("db/PCI-trig.db","IOC=${IOC_NAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
 
 # Support for Beam Synchronous Acquisition (BSA)
-#dbLoadRecords("db/${IOCNAME}-bsa.db")
+#dbLoadRecords("db/${IOC_NAME}-bsa.db")
 # ========================================================
 
 # =====================================================================
