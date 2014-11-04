@@ -18,7 +18,7 @@ epicsEnvSet("EPICS\_IOC\_LOG_CLIENT_INET","${IOC}")
 
 # Override the TOP variable set by envPaths:
 # This is now past in via $IOC/<cpuName>/<epicsIOCName>/iocStartup.cmd
-epicsEnvSet(TOP,"{IOC_APP}")
+epicsEnvSet(TOP,"${IOC_APP}")
 
 # Need this path to EPICS BASE so that caRepeater can be started:
 # Let's figure out a way to pass this one in via the IOC's
