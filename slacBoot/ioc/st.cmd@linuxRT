@@ -39,6 +39,15 @@ epicsEnvSet(TOP,"${IOC_APP}")
 # Uncomment and set appropriate size for your application:
 #epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "800000")
 
+# Set some facility specific MACROs for database instantiation below
+# This is in effort to make IOCs Applications facility agnostic
+# Some of the following variables may be defined in
+# $IOC/<cpuName>/<epicsIOCName>/iocStartup.cmd
+# 
+epicsEnvSet("SYS_FACILITY","SYS0")
+epicsEnvSet("LOCAT","B34")
+
+
 # END: Additional environment variables
 # ====================================================================
 
@@ -141,17 +150,25 @@ dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
 # Change SYS MACRO to match your facility:
 # SYS0 = LCLS 1
 # SYS1 = FACET
-# SYS6 = Test Facilities
+# SYS6 = XTA
 # ===========================================================================
-dbLoadRecords("db/Pattern.db","IOC=${IOC_NAME},SYS=SYS0")
+dbLoadRecords("db/Pattern.db","IOC=${IOC_NAME},SYS=${SYS_FACILITY}")
 
 # Databases for the PMC EVR230
-dbLoadRecords("db/EvrPmc.db","EVR=EVR:B34:EV07,CRD=0,SYS=SYS0")
-dbLoadRecords("db/PMC-trig.db","IOC=${IOC_NAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
+# Note the first instance of an EVR will inherit the unit number of the parent IOC.
+# All additional EVR instances will have its unit number incremented by one.
+# Hence,
+# EVR device number one ==> EVR=EVR:B34:EV07
+# EVR device number two ==> EVR=EVR:B34:EV08
+dbLoadRecords("db/EvrPmc.db","EVR=EVR:B34:EV07,CRD=0,SYS=${SYS_FACILITY}")
+dbLoadRecords("db/PMC-trig.db","IOC=${IOC_NAME},LOCA=${LOCAT},UNIT=EV07,SYS=${SYS_FACILITY}")
 
+# The EVR300 can only be used in PCs not mTCA
 # Databases for the PMC EVR300
-#dbLoadRecords("db/EvrPci.db","EVR=EVR:B34:EV081,SYS=SYS0")
-#dbLoadRecords("db/PCI-trig.db","IOC=${IOC_NAME},LOCA=B34,UNIT=EV07,SYS=SYS0")
+# EVR device number one ==> EVR=EVR:B34:EV07
+# EVR device number two ==> EVR=EVR:B34:EV08
+#dbLoadRecords("db/EvrPci.db","EVR=EVR:B34:EV07,SYS=${SYS_FACILITY}")
+#dbLoadRecords("db/PCI-trig.db","IOC=${IOC_NAME},LOCA=${LOCAT},UNIT=EV07,SYS=${SYS_FACILITY}")
 
 # Support for Beam Synchronous Acquisition (BSA)
 #dbLoadRecords("db/${IOC_NAME}-bsa.db")
