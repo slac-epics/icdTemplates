@@ -10,21 +10,22 @@
 # ====================================================================
 # Setup environment variables
 
-epicsEnvSet("ENGINEER","Curly Johnson")
-epicsEnvSet("LOCATION","Twilight Zone")
-
 # tag log messages with IOC name
 # How to escape the "_IOC_" as the PERL program
 # will try to replace it.
 # So, uncomment the following and remove the backslash
-epicsEnvSet("EPICS_IOC_LOG_CLIENT_INET","${IOC}")
+epicsEnvSet("EPICS\_IOC\_LOG_CLIENT_INET","${IOC}")
 
-epicsEnvSet(TOP,"../..")
+# Override the TOP variable set by envPaths:
+# This is now past in via $IOC/<cpuName>/<epicsIOCName>/iocStartup.cmd
+epicsEnvSet(TOP,"{IOC_APP}")
 
 # Need this path to EPICS BASE so that caRepeater can be started:
 # Let's figure out a way to pass this one in via the IOC's
 # initial startup.cmd: another job for hookIOC.py :)
-epicsEnvSet(PATH,"${EPICS_BASE}/bin/_ARCH_")
+# Not needed caRepeater is started up by laci for all IOCs at
+# CPU boot up.
+#epicsEnvSet(PATH,"${EPICS_BASE}/bin/_ARCH_")
 
 # ========================================================
 # Support Large Arrays/Waveforms; Number in Bytes
@@ -35,7 +36,8 @@ epicsEnvSet(PATH,"${EPICS_BASE}/bin/_ARCH_")
 # The default maximum size for a channel access array is
 # 16K bytes.
 # ========================================================
-epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "800000")
+# Uncomment and set appropriate size for your application:
+#epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "800000")
 
 # END: Additional environment variables
 # ====================================================================
@@ -240,13 +242,16 @@ cd("/data/${IOC}/autosave-req")
 # The following command makes the autosave request files 'info_settings.req',
 # and 'info_positions.req', from information (info nodes) contained in all of
 # the EPICS databases that have been loaded into this IOC.
-makeAutosaveFiles()
 
+makeAutosaveFiles()
 create_monitor_set("info_settings.req",60,"")
+
 # ===========================================================================
 
+cd ${START_UP}
 # ===========================================================================
 # Setup Real-time priorities after iocInit for driver threads
 # ===========================================================================
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
 
+cd ${IOC_BOOT}
