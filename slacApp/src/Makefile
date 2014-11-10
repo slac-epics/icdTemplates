@@ -25,10 +25,15 @@ _APPNAME__DBD += autosave.dbd
 _APPNAME__DBD += caPutLog.dbd
 _APPNAME__DBD += $(CEXP_DBDS)
 
-
-ifeq ($(T_A),linuxRT-x86)
+# ================================================================================
+# The system command is available for all architectures
+# We do not need to use ifdefs.
+# The problem with the following is that the last architecture to be built
+# will override this.
+# ================================================================================
+#ifeq ($(T_A),linuxRT-x86)
  _APPNAME__DBD += systemCommand.dbd
-endif
+#endif
 
 # If you don't have an EVR comment the following two lines:
 _APPNAME__DBD += evrSupport.dbd
@@ -42,9 +47,16 @@ _APPNAME__SRCS += _APPNAME__registerRecordDeviceDriver.cpp
 
 _APPNAME__SRCS_vxWorks += -nil-
 
-ifeq ($(T_A),linuxRT-x86)
+# ================================================================================
+# The system command is available for all architectures
+# We do not need to use ifdefs.
+# The problem with the following is that the last architecture to be built
+# will override this.
+# ================================================================================
+#ifeq ($(T_A),linuxRT-x86)
 _APPNAME__SRCS += systemCommand.c
-endif
+#endif
+
 # ========================================================================
 # ========================================================================
 # Add locally compiled object code
