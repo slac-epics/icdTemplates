@@ -26,14 +26,10 @@ _APPNAME__DBD += caPutLog.dbd
 _APPNAME__DBD += $(CEXP_DBDS)
 
 # ================================================================================
-# The system command is available for all architectures
-# We do not need to use ifdefs.
-# The problem with the following is that the last architecture to be built
-# will override this.
+# The system command will be mainly used by linux hosted IOCs
+# Very useful for changing kernel thread priorities for kernel drivers
 # ================================================================================
-#ifeq ($(T_A),linuxRT-x86)
- _APPNAME__DBD += systemCommand.dbd
-#endif
+_APPNAME__DBD += system.dbd
 
 # If you don't have an EVR comment the following two lines:
 _APPNAME__DBD += evrSupport.dbd
@@ -43,19 +39,9 @@ _APPNAME__DBD += devMrfEr.dbd
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
 _APPNAME__SRCS += _APPNAME__registerRecordDeviceDriver.cpp
 
- _APPNAME__SRCS_DEFAULT += _APPNAME_Main.cpp
+_APPNAME__SRCS_DEFAULT += _APPNAME_Main.cpp
 
 _APPNAME__SRCS_vxWorks += -nil-
-
-# ================================================================================
-# The system command is available for all architectures
-# We do not need to use ifdefs.
-# The problem with the following is that the last architecture to be built
-# will override this.
-# ================================================================================
-#ifeq ($(T_A),linuxRT-x86)
-_APPNAME__SRCS += systemCommand.c
-#endif
 
 # ========================================================================
 # ========================================================================
