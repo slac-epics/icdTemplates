@@ -33,7 +33,7 @@ epicsEnvSet(TOP,"${IOC_APP}")
 # FAC = SYS1 ==> FACET
 
 # System Location:
-epicsEnvSet("LOCAT","B34")
+epicsEnvSet("LOCA","B34")
 
 #epicsEnvSet(EVR_DEV1,"EVR:B34:EVXX")
 #epicsEnvSet(UNIT,"EVXX")
