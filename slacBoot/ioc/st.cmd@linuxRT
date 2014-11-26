@@ -176,14 +176,14 @@ dbLoadRecords("db/Pattern.db","IOC=${IOC_NAME},SYS=${FAC}")
 # EVR device number one ==> EVR=EVR:B34:EV07
 # EVR device number two ==> EVR=EVR:B34:EV08
 dbLoadRecords("db/EvrPmc.db","EVR=${EVR_DEV1},CRD=0,SYS=${FAC}")
-dbLoadRecords("db/PMC-trig.db","IOC=${IOC_NAME},LOCA=${LOCAT},UNIT=${UNIT},SYS=${FAC}")
+dbLoadRecords("db/PMC-trig.db","IOC=${IOC_NAME},LOCA=${LOCA},UNIT=${UNIT},SYS=${FAC}")
 
 # The EVR300 can only be used in PCs not mTCA
 # Databases for the PMC EVR300
 # EVR device number one ==> EVR=EVR:B34:EV07
 # EVR device number two ==> EVR=EVR:B34:EV08
 #dbLoadRecords("db/EvrPci.db","EVR=${EVR_DEV1},SYS=${FAC}")
-#dbLoadRecords("db/PCI-trig.db","IOC=${IOC_NAME},LOCA=${LOCAT},UNIT=${UNIT},SYS=${FAC}")
+#dbLoadRecords("db/PCI-trig.db","IOC=${IOC_NAME},LOCA=${LOCA},UNIT=${UNIT},SYS=${FAC}")
 
 # Support for Beam Synchronous Acquisition (BSA)
 
