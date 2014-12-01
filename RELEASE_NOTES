@@ -11,4 +11,7 @@
 #--------------------------------------------------------------
 
 
+icdTemplates-R1-2-0: For EPICS BASE: R3-14-12-4_1-0
+
 icdTemplates-R1-0-1: First official release to be consumed.
+                     EPICS BASE: R3-14-12-3_1-0
