@@ -21,7 +21,7 @@ DBD += _APPNAME_.dbd
 # _APPNAME_.dbd will be made up from these files:
 _APPNAME__DBD += base.dbd
 _APPNAME__DBD += devIocStats.dbd
-_APPNAME__DBD += autosave.dbd
+_APPNAME__DBD += autosaveSupport.dbd
 _APPNAME__DBD += caPutLog.dbd
 _APPNAME__DBD += $(CEXP_DBDS)
 
