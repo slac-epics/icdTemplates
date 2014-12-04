@@ -130,6 +130,10 @@ ErConfigure(0, 0, 0, 0, 1)
 # Add evrInitialize (after ErConfigure) if a fiducial routine will be
 # registered before iocInit driver initialization:
 #evrInitialize()
+# evrInitialize() is not registered with EPICS ioc shell.
+# So, we will need to use cexpsh() to execute it. Like so,:
+# cexpsh("-c",'evrInitialize()')
+
 # ======= EVR Setup Complete ============================================
 
 
@@ -296,3 +300,7 @@ cd ${START_UP}
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
 
 cd ${IOC_BOOT}
+
+# An example of using the CEXP Shell:
+# cexpsh("-c",'printf("hello\n")')
+
