@@ -78,7 +78,9 @@ _APPNAME__LIBS += $(CEXP_LIBS)
 
  ifneq ($(T_A),linuxRT-x86)
    ifneq ($(T_A),linux-x86)
+     ifneq ($(T_A),linux-x86_64)
        _APPNAME__LIBS += mrfVme64x
+     endif
    endif
  endif
 
