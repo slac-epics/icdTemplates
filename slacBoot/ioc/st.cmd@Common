@@ -83,7 +83,7 @@ save_restoreSet_IncompleteSetsOk(1)
 # created save/restore backup files with date string
 # useful for recovery.
 # ============================================================
-save_restoreSet_DatedBackupFiles(0)
+save_restoreSet_DatedBackupFiles(1)
 
 # ============================================================
 # Where to find the list of PVs to save
