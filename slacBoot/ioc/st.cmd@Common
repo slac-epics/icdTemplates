@@ -109,6 +109,13 @@ set_pass1_restoreFile("info_settings.sav")
 # End: Setup autosave/restore
 # =====================================================================
 
+# =====================================================================
+# Channel Access Security:
+# This is required if you use caPutLog.
+# Set access security file
+# Load common LCLS Access Configuration File
+< ${ACF_INIT}
+
 
 cd ${TOP}/startup/${IOC}
 iocInit()

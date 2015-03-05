@@ -257,8 +257,8 @@ set_pass1_restoreFile("info_settings.sav")
 # Channel Access Security:  
 # This is required if you use caPutLog.
 # Set access security file
-asSetFilename("${ACF_COMMON}/caputlogtest.acf")
-
+# Load common LCLS Access Configuration File
+< ${ACF_INIT}
 
 # =============================================================
 # Start EPICS IOC Process (i.e. all threads will start running)
