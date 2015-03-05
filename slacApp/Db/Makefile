@@ -15,10 +15,19 @@ DB += dbExample.db
 # ========================================
 # Install timing/event related databases
 # ========================================
-#DB += IOCNAME-evr.db
-#DB += IOCNAME-pattern.db
-#DB += IOCNAME-trig.db
-#DB += IOCNAME-bsa.db
+DB_INSTALLS += $(EVENT)/db/EvrPmc.db
+DB_INSTALLS += $(EVENT)/db/EvrPci.db
+DB_INSTALLS += $(EVENT)/db/Pattern.db
+DB_INSTALLS += $(EVENT)/db/PCI-trig.db
+DB_INSTALLS += $(EVENT)/db/PMC-trig.db
+DB_INSTALLS += $(EVENT)/db/VME-trig.db
+DB_INSTALLS += $(EVENT)/db/VME-TTB-trig.db
+DB_INSTALLS += $(EVENT)/db/Bsa.db
+#
+# For event module BSA Test
+DB += bsaSimulator.db
+
+
 
 # Install Common databases needed by All IOCs
 # ========================================================
