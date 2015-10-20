@@ -76,18 +76,30 @@ _APPNAME__LIBS += $(CEXP_LIBS)
  _APPNAME__LIBS += evrSupport
  _APPNAME__LIBS += devMrfEr
 
- ifneq ($(T_A),linuxRT-x86)
-   ifneq ($(T_A),linux-x86)
-     ifneq ($(T_A),linux-x86_64)
+ifneq ($(T_A),linuxRT-x86)
+  ifneq ($(T_A),linuxRT-x86_64)
+   ifneq ($(T_A),linuxRT_glibc-x86_64)
+    ifneq ($(T_A),linux-x86)
+      ifneq ($(T_A),linux-x86_64)
        _APPNAME__LIBS += mrfVme64x
-     endif
-   endif
+      endif
+    endif
+  endif
  endif
+endif
 
  ifeq ($(T_A),linuxRT-x86)
   _APPNAME__LIBS += drvMrf
  endif
+
+ ifeq ($(T_A),linuxRT-x86_64)
+  _APPNAME__LIBS += drvMrf
+ endif
  
+ ifeq ($(T_A),linuxRT_glibc-x86_64)
+  _APPNAME__LIBS += drvMrf
+ endif
+
  ifeq ($(T_A),linux-x86)
   _APPNAME__LIBS += drvMrf
  endif
