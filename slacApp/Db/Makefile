@@ -11,6 +11,9 @@ include $(TOP)/configure/CONFIG
 # Create and install (or just install)
 # databases, templates, substitutions like this
 DB += dbExample.db
+DB += dbExample1.db
+DB += dbExample2.db
+DB += userHost.substitutions
 
 # ========================================
 # Install timing/event related databases
