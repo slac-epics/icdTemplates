@@ -67,7 +67,7 @@ PERFMEASURE_MODULE_VERSION=perfMeasure-R1-1-0
 # ============================================================
 ASYN_MODULE_VERSION=asyn-R4-26_0
 ECASYN_MODULE_VERSION=ethercat-R4-3_1-2
-MOTOR_MODULE_VERSION=motorR6-9
+MOTOR_MODULE_VERSION=motorR6-9_RC1
 COUNTER_MODULE_VERSION=MAIN_TRUNK
 STREAMDEVICE_MODULE_VERSION=streamdevice-R2-6_1-3
 # ============================================================
