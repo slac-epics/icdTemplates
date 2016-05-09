@@ -87,11 +87,11 @@ _APPNAME__SRCS_vxWorks += -nil-
 
 
 _APPNAME__LIBS += ecAsyn 
-_APPNAME__LIBS += asyn
-_APPNAME__LIBS += stream
-_APPNAME__LIBS += motor  
+_APPNAME__LIBS += motor
 _APPNAME__LIBS += EtherCATMotor
 _APPNAME__LIBS += LinmotMotor
+_APPNAME__LIBS += asyn
+_APPNAME__LIBS += stream
 _APPNAME__LIBS += rtutils scannerlib
 _APPNAME__LIBS += apci1710 
 
