@@ -63,13 +63,15 @@ PERFMEASURE_MODULE_VERSION=perfMeasure-R1-1-0
 
 
 # ============================================================
-# What we need for EtherCAT, Motor,Encoder,  and StreamDevice
+# What we need for EtherCAT, Motor, Encoder, and StreamDevice
+# CAEN N1470 HV Bias Power Supply
 # ============================================================
 ASYN_MODULE_VERSION=asyn-R4-26_0
 ECASYN_MODULE_VERSION=ethercat-R4-3_1-2
 MOTOR_MODULE_VERSION=motorR6-9_RC1
-COUNTER_MODULE_VERSION=MAIN_TRUNK
+COUNTER_MODULE_VERSION=apci1710-asyn-R1-0-3
 STREAMDEVICE_MODULE_VERSION=streamdevice-R2-6_1-3
+CAENN1470_MODULE_VERSION=caenN1470-R1-2-1_1-1
 # ============================================================
 
 # Let's add in support for the cexpsh()
