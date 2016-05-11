@@ -112,7 +112,20 @@ ecAsynInit("/tmp/sock1", 1000000)
 # 1 Axis
 # 500 ms moving poll
 # 1000 ms idle poll
+# For LinMot Servo Drive/Controller
 LinmotCreateController(MOTOR0, LINMOTOR0, 1, 500, 1000)
+
+# ========================================================================================
+# Creates port M0
+# connected to ECASYN port MOTOR0
+# 1 Axis
+# 500 ms moving poll
+# 1000 ms idle poll
+# For Beckhoff Motor Controller
+# ========================================================================================
+EtherCATCreateController(M0, MOTR0, 1, 500, 1000)
+dbLoadRecords("../../db/basic_asyn_motor.db", "P=TEST:B084:,M=R156:MOTR,PORT=M0,ADDR=0")
+
 
 # =======================================================
 # Init APCI1710: To Addi-Data Real time position encoder
@@ -177,8 +190,16 @@ dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
 # ==================================================================================================
 # Load Additional databases:
 # ==================================================================================================
-#dbLoadRecords("../../db/E1250-EC-UC.template", "DEVICE=JRECTEST:1,PORT=LINMOTOR0,SCAN=1 second")
-dbLoadRecords("../../db/Fws-motor.db")
+
+# LinMot Servo Drive/Controller
+dbLoadRecords("../../db/E1250-EC-UC.template", "DEVICE=JRECTEST:1,PORT=LINMOTOR0,SCAN=1 second")
+
+# Beckhoff Motor Controller:
+dbLoadRecords("../../db/basic_asyn_motor.db", "P=TEST:B084:,M=R156:MOTR,PORT=M0,ADDR=0")
+
+#dbLoadRecords("../../db/Fws-motor.db")
+
+# position encoder
 dbLoadRecords("../../db/APCI1710Counter.db")
 
 # END: Loading the record databases
