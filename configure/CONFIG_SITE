@@ -32,6 +32,16 @@ CROSS_COMPILER_TARGET_ARCHS = linuxRT_glibc-x86_64
 # You must rebuild in the iocBoot directory for this to
 #   take effect.
 #IOCS_APPL_TOP = </IOC/path/to/application/top>
+#
+# =======================================================
+# Let's install our IOC boot products:
+# envPaths and st.cmd
+# =======================================================
+IOCS_APPL_TOP  = $(INSTALL_LOCATION)
+
+INSTALL_LOCATION_STARTUP += $(INSTALL_LOCATION)/startup
+DIRECTORY_TARGETS += $(INSTALL_LOCATION_STARTUP)
+# =======================================================
 
 ## =============================
 ## Build Application Statically
