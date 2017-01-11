@@ -116,13 +116,13 @@ _APPNAME__LIBS += evrSupport
 _APPNAME__LIBS += devMrfEr
 
 
-ifeq ($(T_A),linuxRT_glibc-x86_64)
+ifeq ($(T_A),linuxRT-x86_64)
    _APPNAME__LIBS += drvMrf
      evrma_DIR = $(EVRMA_LIB)
        _APPNAME__LIBS += evrma
 endif
 
-ifeq ($(T_A),linux-x86_64)
+ifeq ($(T_A),rhel6-x86_64)
   _APPNAME__LIBS += drvMrf
   evrma_DIR = $(EVRMA_LIB)
   _APPNAME__LIBS += evrma
@@ -136,28 +136,32 @@ _APPNAME__LIBS += perfMeasure
 
 _APPNAME__LIBS += $(CEXP_LIBS)
 
+# =======================================================
 # NOTE: To build SNL programs, SNCSEQ must be defined
 # in the <top>/configure/RELEASE file
-
+# =======================================================
 ifneq ($(SNCSEQ),)
-#   This builds sncExample as a component of _APPNAME_
-    _APPNAME__SNCFLAGS += +r
+     # Build sncExample into _APPNAME_Support
+    sncExample_SNCFLAGS += +r
     _APPNAME__DBD += sncExample.dbd
-    _APPNAME__SRCS += sncExample.stt
+    # A .stt sequence program is *not* pre-processed:
+    _APPNAME_Support_SRCS += sncExample.stt
+    _APPNAME_Support_LIBS += seq pv
     _APPNAME__LIBS += seq pv
-# The following builds sncProgram as a standalone application
-    ifneq ($(T_A),linuxRT-x86)
-       PROD_HOST += sncProgram
-       sncProgram_SNCFLAGS += +m
-       sncProgram_SRCS += sncProgram.st
-       sncProgram_LIBS += seq pv
-       sncProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
-    endif
+
+    # Build sncProgram as a standalone program
+    PROD_HOST += sncProgram
+    sncProgram_SNCFLAGS += +m
+    # A .st sequence program *is* pre-processed:
+    sncProgram_SRCS += sncProgram.st
+    sncProgram_LIBS += seq pv
+    sncProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
 endif
+# =========================================================
 
-
-
+# Finally link IOC to the EPICS Base libraries
 _APPNAME__LIBS += $(EPICS_BASE_IOC_LIBS)
+
 
 # ==================================================
 # Install external epics executable
