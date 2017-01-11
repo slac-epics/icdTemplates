@@ -33,9 +33,10 @@ TEMPLATE_TOP=_TEMPLATE_TOP_
 include $(TOP)/RELEASE_SITE
 
 # =============================================================
-# Define location of the modules tree
+# Define location of the modules tree:
+# Defined in $TOP/RELEASE_SITE
 # =============================================================
-EPICS_MODULES=$(MODULES_SITE_TOP)
+# $(MODULES_SITE_TOP)
 
 # =============================================================
 # Define the version of modules needed by
@@ -74,36 +75,39 @@ CAENN1470_MODULE_VERSION=caenN1470-R1-2-1_1-1
 # CEXP module
 CEXP_MODULE_VERSION=cexpsh-R1-0-0
 
-# ============================================================
-#  Module Location
-# ============================================================
+# =============================================================
+# Location of the modules tree:
+# Defined in $TOP/RELEASE_SITE
+# =============================================================
+# $(MODULES_SITE_TOP)
+# =============================================================
 
-SNCSEQ=$(EPICS_MODULES)/seq/$(SEQ_MODULE_VERSION)
-AUTOSAVE=$(EPICS_MODULES)/autosave/$(AUTOSAVE_MODULE_VERSION)
-CAPUTLOG=$(EPICS_MODULES)/caPutLog/$(CAPUTLOG_MODULE_VERSION)
-IOCADMIN=$(EPICS_MODULES)/iocAdmin/$(IOCADMIN_MODULE_VERSION)
+SNCSEQ=$(MODULES_SITE_TOP)/seq/$(SEQ_MODULE_VERSION)
+AUTOSAVE=$(MODULES_SITE_TOP)/autosave/$(AUTOSAVE_MODULE_VERSION)
+CAPUTLOG=$(MODULES_SITE_TOP)/caPutLog/$(CAPUTLOG_MODULE_VERSION)
+IOCADMIN=$(MODULES_SITE_TOP)/iocAdmin/$(IOCADMIN_MODULE_VERSION)
 
-MISCUTILS=$(EPICS_MODULES)/miscUtils/$(MISCUTILS_MODULE_VERSION)
+MISCUTILS=$(MODULES_SITE_TOP)/miscUtils/$(MISCUTILS_MODULE_VERSION)
 
 # You can only have one or the other here:
 # EVENT module should be deprecated. Use evrClient now
-# EVENT=$(EPICS_MODULES)/event/$(EVENT_MODULE_VERSION)
-EVRCLIENT=$(EPICS_MODULES)/evrClient/$(EVRCLIENT_MODULE_VERSION)
-RTEMSUTILS=$(EPICS_MODULES)/rtemsutils/$(RTEMSUTILS_MODULE_VERSION)
-DEVBUSMAPPED=$(EPICS_MODULES)/devBusMapped/$(DEVBUSMAPPED_MODULE_VERSION)
-DEVLIB2=$(EPICS_MODULES)/devlib2/$(DEVLIB2_MODULE_VERSION)
-DRVUIOPCIGEN=$(EPICS_MODULES)/drvUioPciGen/$(DRVUIOPCIGEN_MODULE_VERSION)
-PERFMEASURE=$(EPICS_MODULES)/perfMeasure/$(PERFMEASURE_MODULE_VERSION)
+# EVENT=$(MODULES_SITE_TOP)/event/$(EVENT_MODULE_VERSION)
+EVRCLIENT=$(MODULES_SITE_TOP)/evrClient/$(EVRCLIENT_MODULE_VERSION)
+RTEMSUTILS=$(MODULES_SITE_TOP)/rtemsutils/$(RTEMSUTILS_MODULE_VERSION)
+DEVBUSMAPPED=$(MODULES_SITE_TOP)/devBusMapped/$(DEVBUSMAPPED_MODULE_VERSION)
+DEVLIB2=$(MODULES_SITE_TOP)/devlib2/$(DEVLIB2_MODULE_VERSION)
+DRVUIOPCIGEN=$(MODULES_SITE_TOP)/drvUioPciGen/$(DRVUIOPCIGEN_MODULE_VERSION)
+PERFMEASURE=$(MODULES_SITE_TOP)/perfMeasure/$(PERFMEASURE_MODULE_VERSION)
 
-ASYN=$(EPICS_MODULES)/asyn/$(ASYN_MODULE_VERSION)
-ECASYN=$(EPICS_MODULES)/ethercat/$(ECASYN_MODULE_VERSION)
-MOTOR=$(EPICS_MODULES)/motor/$(MOTOR_MODULE_VERSION)
-COUNTER=$(EPICS_MODULES)/apci1710-asyn/$(COUNTER_MODULE_VERSION)
-STREAMDEVICE=$(EPICS_MODULES)/streamdevice/$(STREAMDEVICE_MODULE_VERSION)
-CAENN1470=$(EPICS_MODULES)/caenN1470/$(CAENN1470_MODULE_VERSION)
+ASYN=$(MODULES_SITE_TOP)/asyn/$(ASYN_MODULE_VERSION)
+ECASYN=$(MODULES_SITE_TOP)/ethercat/$(ECASYN_MODULE_VERSION)
+MOTOR=$(MODULES_SITE_TOP)/motor/$(MOTOR_MODULE_VERSION)
+COUNTER=$(MODULES_SITE_TOP)/apci1710-asyn/$(COUNTER_MODULE_VERSION)
+STREAMDEVICE=$(MODULES_SITE_TOP)/streamdevice/$(STREAMDEVICE_MODULE_VERSION)
+CAENN1470=$(MODULES_SITE_TOP)/caenN1470/$(CAENN1470_MODULE_VERSION)
 
 
-CEXP=$(EPICS_MODULES)/cexpsh/$(CEXP_MODULE_VERSION)
+CEXP=$(MODULES_SITE_TOP)/cexpsh/$(CEXP_MODULE_VERSION)
 # =====================================================================
 
 # =====================================================================
