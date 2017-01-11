@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+icdTemplates-R2-0-0: Changes made to support EPICS BASE 3.15.5.x; also made changes to architecture
+                     names: 
+                      * linux-x86_64 moves to rhel6-x86_64
+                      * linuxRT_glibc-x86_64 moves to linuxRT-x86_64
+
 icdTemplates-R1-2-2: Add support for new SLAC-based template for etherCAT-based motion
                      under linuxRT and Fast Wire Scanner using linMot
 

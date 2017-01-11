@@ -16,11 +16,21 @@
 #   continue building anyway if conflicts are found.
 CHECK_RELEASE = YES
 
-# Set this when you only want to compile this application
+# ========================================================================
+#   Set this when you only want to compile this application
 #   for a subset of the cross-compiled target architectures
 #   that Base is built for.
-CROSS_COMPILER_TARGET_ARCHS = linuxRT_glibc-x86_64
+# ========================================================================
+# RTEMS based targets:     
+# CROSS_COMPILER_TARGET_ARCHS = RTEMS-beatnik RTEMS-mvme3100 RTEMS-uC5282
+# ========================================================================
+# =============================================================================
+# Embedded LinuxRT target 32-bit CPUs
+#CROSS_COMPILER_TARGET_ARCHS = linuxRT-i686
 
+# Embedded LinuxRT target 64-bit CPUs (most popular target for MR and LCLS II)
+CROSS_COMPILER_TARGET_ARCHS = linuxRT-x86_64
+# =============================================================================
 
 # To install files into a location other than $(TOP) define
 #   INSTALL_LOCATION here.
