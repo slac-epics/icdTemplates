@@ -36,11 +36,11 @@ _APPNAME__DBD += evrSupport.dbd
 _APPNAME__DBD += devMrfEr.dbd
 
 # ======================================================================
-# <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
+# _APPNAME__registerRecordDeviceDriver.cpp derives from _APPNAME_.dbd
 _APPNAME__SRCS += _APPNAME__registerRecordDeviceDriver.cpp
 
+# Build the main IOC entry point where needed
 _APPNAME__SRCS_DEFAULT += _APPNAME_Main.cpp
-
 _APPNAME__SRCS_vxWorks += -nil-
 
 # ========================================================================
@@ -76,37 +76,19 @@ _APPNAME__LIBS += $(CEXP_LIBS)
  _APPNAME__LIBS += evrSupport
  _APPNAME__LIBS += devMrfEr
 
-ifneq ($(T_A),linuxRT-x86)
-  ifneq ($(T_A),linuxRT-x86_64)
-   ifneq ($(T_A),linuxRT_glibc-x86_64)
-    ifneq ($(T_A),linux-x86)
-      ifneq ($(T_A),linux-x86_64)
+ifneq ($(T_A),linuxRT-x86_64)
+  ifneq ($(T_A),rhel6-x86_64)
        _APPNAME__LIBS += mrfVme64x
-      endif
-    endif
   endif
- endif
 endif
 
- ifeq ($(T_A),linuxRT-x86)
+ifeq ($(T_A),linuxRT-x86_64)
   _APPNAME__LIBS += drvMrf
- endif
+endif
 
- ifeq ($(T_A),linuxRT-x86_64)
+ifeq ($(T_A),rhel6-x86_64)
   _APPNAME__LIBS += drvMrf
- endif
- 
- ifeq ($(T_A),linuxRT_glibc-x86_64)
-  _APPNAME__LIBS += drvMrf
- endif
-
- ifeq ($(T_A),linux-x86)
-  _APPNAME__LIBS += drvMrf
- endif
-
- ifeq ($(T_A),linux-x86_64)
-  _APPNAME__LIBS += drvMrf
- endif
+endif
 # =====================================================
 # END EVR libraries
 # =====================================================
@@ -114,28 +96,33 @@ endif
 # NOTE: To build SNL programs, SNCSEQ must be defined
 # in the <top>/configure/RELEASE file
 
+# To build SNL programs, SNCSEQ must be defined
+# in the <top>/configure/RELEASE file
 ifneq ($(SNCSEQ),)
-    # This builds sncExample as a component of _APPNAME_
-    _APPNAME__SNCFLAGS += +r
+     # Build sncExample into _APPNAME_Support
+    sncExample_SNCFLAGS += +r
     _APPNAME__DBD += sncExample.dbd
-    _APPNAME__SRCS += sncExample.stt
+    # A .stt sequence program is *not* pre-processed:
+    _APPNAME_Support_SRCS += sncExample.stt
+    _APPNAME_Support_LIBS += seq pv
     _APPNAME__LIBS += seq pv
-
-    # The following builds sncProgram as a standalone application
-  ifneq ($(T_A),linuxRT-x86)
+    
+    # Build sncProgram as a standalone program
     PROD_HOST += sncProgram
     sncProgram_SNCFLAGS += +m
+    # A .st sequence program *is* pre-processed:
     sncProgram_SRCS += sncProgram.st
     sncProgram_LIBS += seq pv
     sncProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
-  endif
 endif
 
+
+# Finally link IOC to the EPICS Base libraries
 _APPNAME__LIBS += $(EPICS_BASE_IOC_LIBS)
 
-#===========================
+#==============================================
 
 include $(TOP)/configure/RULES
 #----------------------------------------
-#  ADD RULES AFTER THIS LINE
+#  ADD EXTRA GNUMAKE RULES BELOW HERE
 
