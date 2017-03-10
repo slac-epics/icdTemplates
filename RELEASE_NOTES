@@ -9,6 +9,8 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.1.0: First version of icdTemplates working with the new Git Workflow
+
 icdTemplates-R2-0-0: Changes made to support EPICS BASE 3.15.5.x; also made changes to architecture
                      names: 
                       * linux-x86_64 moves to rhel6-x86_64

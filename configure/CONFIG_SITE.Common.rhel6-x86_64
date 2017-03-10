@@ -3,38 +3,56 @@
 
 # For rhel6-x86_64
 
-ETHERLAB=$(PACKAGE_SITE_TOP)/linuxKernel_Modules/ethercat/rhel6-x86_64
-
-ETHERCAT_LIB = $(ETHERLAB)/lib/.libs
-ETHERCAT_INCLUDE = -I$(ETHERLAB)/include
-ETHERCAT_LINK = -L$(ETHERLAB)/lib/.libs -Wl,-rpath=$(ETHERLAB)/lib/.libs
-
-XZ_LIB=$(PACKAGE_SITE_TOP)/xz/5.2.2/rhel6-x86_64/lib
-XZ_INCLUDE = -I$(PACKAGE_SITE_TOP)/xz/5.2.2/rhel6-x86_64/include
-
-ZLIB_LIB=$(PACKAGE_SITE_TOP)/zlib/1.2.8/rhel6-x86_64/lib
-ZLIB_INCLUDE = -I$(PACKAGE_SITE_TOP)/zlib/1.2.8/rhel6-x86_64/include
+# Kernel Module and Linux Package Versions in use
+ETHERLAB_RT_VERSION = R1.5.2-0.2.0
+XZ_VERSION = 5.2.2
+ZLIB_VERSION = 1.2.8
+LIBXML2_VERSION = 2.9.3
+PCRE_VERSION = 8.37
+EVRMADRIVER_VERSION = R1.0.7
+EVRMA_VERSION = R1.0.7
 
 
-LIBXML2_LIB = $(PACKAGE_SITE_TOP)/libxml2/2.9.3/rhel6-x86_64/lib
-LIBXML2_INCLUDE = -I$(PACKAGE_SITE_TOP)/libxml2/2.9.3/rhel6-x86_64/include/libxml2
+# So only need to define location of libs and headers
+BUILDROOT_HOME = /afs/slac/package/linuxRT/$(BUILDROOT_VERSION)
+STAGE_X86 = $(BUILDROOT_HOME)/$(BUILDROOT_VERSION)-$(BUILDROOT_ARCH)/output/staging
+
+ETHERLAB_RT=$(PACKAGE_SITE_TOP)/linuxKernel_Modules/etherlabmaster/$(ETHERLAB_RT_VERSION)/rhel6-x86_64
+
+ETHERCAT_LIB = $(ETHERLAB_RT)/lib/
+ETHERCAT_INCLUDE = -I$(ETHERLAB_RT)/include
+ETHERCAT_LINK = -L$(ETHERLAB_RT)/lib -Wl,-rpath=$(ETHERLAB_RT)/lib
+
+XZ_TOP = $(PACKAGE_SITE_TOP)/xz/$(XZ_VERSION)/rhel6-x86_64
+XZ_LIB = $(XZ_TOP)/lib
+XZ_INCLUDE = -I$(XZ_TOP)/include
+
+ZLIB_TOP = $(PACKAGE_SITE_TOP)/zlib/$(ZLIB_VERSION)/rhel6-x86_64
+ZLIB_LIB = $(ZLIB_TOP)/lib
+ZLIB_INCLUDE = -I$(ZLIB_TOP)/include
+
+LIBXML2_TOP = $(PACKAGE_SITE_TOP)/libxml2/$(LIBXML2_VERSION)/rhel6-x86_64
+LIBXML2_LIB = $(LIBXML2_LIB)/lib
+LIBXML2_INCLUDE = -I$(STAGE_X86)/usr/include -I$(LIBXML2_TOP)/include/libxml2
 
 # =========================================================================
 # Perl-compatible regular expression support
 # =========================================================================
-PCRE_INCLUDE = -I$(PACKAGE_SITE_TOP)/pcre/8.37/rhel6-x86_64/include
-PCRE_LIB = $(PACKAGE_SITE_TOP)/pcre/8.37/rhel6-x86_64/lib
+PCRE_TOP = $(PACKAGE_SITE_TOP)/pcre/$(PCRE_VERSION)/rhel6-x86_64
+PCRE_INCLUDE = -I$(PCRE_TOP)/include
+PCRE_LIB = $(PCRE_TOP)/lib
 
 # ==================================================================================================
 # Support for MRF and SLAC-based EVRs:
 # ==================================================================================================
 # Kernel Driver header files:
-KERNEL_MODULE_EVRMA=$(PACKAGE_SITE_TOP)/linuxKernel_Modules/evrmaDriver/evrmaDriver-R1-0-p6
-KERNEL_MODULE_EVRMA_INCLUDE = -I$(KERNEL_MODULE_EVRMA)/src
+KERNEL_MODULE_EVRMA=$(PACKAGE_SITE_TOP)/linuxKernel_Modules/evrmaDriver/$(EVRMADRIVER_VERSION)/rhel6-x86_64
+KERNEL_MODULE_EVRMA_INCLUDE = -I$(KERNEL_MODULE_EVRMA)/include
 
 # User Space Library and API:
-EVRMA=$(PACKAGE_SITE_TOP)/evrma/evrma-R1-0-p6/rhel6-x86_64
+EVRMA=$(PACKAGE_SITE_TOP)/evrma/$(EVRMA_VERSION)/rhel6-x86_64
 EVRMA_LIB     = $(EVRMA)/lib
 EVRMA_INCLUDE = -I$(EVRMA)/include
 # ==================================================================================================
+
 
